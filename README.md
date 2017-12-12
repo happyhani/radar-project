@@ -37,10 +37,13 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 ## eslint忽略文件： https://segmentfault.com/q/1010000007324736
 
+
 > mock数据问题：
 ```
 ### 使用mock.js
 ```
+
+
 > gulp构建工具(基于流的自动化构建工具)：
 
 #### 软件的构建：将源代码转化为可执行软件的过程。
