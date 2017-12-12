@@ -26,12 +26,13 @@
     <!--时段客流 条形统计图-->
     <div class="passenger-flow">
       <div class="title">
-        <div class="details">
-                          时段客流
-        </div>
-        <div class="update">
-          16:00更新
-        </div>
+        <div class="details">时段客流</div>
+        <div class="update">16:00更新</div>
+      </div>
+      <!--条形图-->
+      <div class="echarts">
+        <IEcharts :option="bar" :loading="loading" @ready="onReady" @click="onClick"></IEcharts>
+        <button @click="doRandom">Random</button>
       </div>
     </div>
     
@@ -39,11 +40,55 @@
 </template>
 
 <script type="text/ecmascript">
+  import IEcharts from 'vue-echarts-v3/src/full.js';
+
+   export default {
+    name: 'view',
+    components: {
+      IEcharts
+    },
+    props: {
+    },
+    data: () => ({
+      loading: true,
+      bar: {
+        title: {
+          text: 'ECharts Hello World'
+        },
+        tooltip: {},
+        xAxis: {
+          data: ['Shirt', 'Sweater', 'Chiffon Shirt', 'Pants', 'High Heels', 'Socks']
+        },
+        yAxis: {},
+        series: [{
+          name: 'Sales',
+          type: 'bar',
+          data: [5, 20, 36, 10, 10, 20]
+        }]
+      }
+    }),
+    methods: {
+      doRandom() {
+        const that = this;
+        let data = [];
+        for (let i = 0, min = 5, max = 99; i < 6; i++) {
+          data.push(Math.floor(Math.random() * (max + 1 - min) + min));
+        }
+        that.loading = !that.loading;
+        that.bar.series[0].data = data;
+      },
+      onReady(instance) {
+        console.log(instance);
+      },
+      onClick(event, instance, echarts) {
+        console.log(arguments);
+      }
+    }
+  };
 </script>
 
 <style lang="scss" scoped>
  @import '../../assets/hotcss/px2rem.scss';
-  $fontsize24: 24px;
   .overview-bg {
     position: fixed;
     top: 0;
@@ -75,11 +120,10 @@
         width: 100%;
         line-height: px2rem(96);
         text-align: center;
-        
       }
     }
     /*店主 店名 信息*/
-    .title {
+    &>.title {
       width: 100%;
       height: px2rem(40);
       margin-top: px2rem(26);
@@ -135,6 +179,7 @@
       box-sizing: border-box;
       .title {
         .details {
+          position: relative;
           width: px2rem(265);
           height: px2rem(40);
           line-height: px2rem(40);
@@ -142,14 +187,35 @@
           color: #84fffd;
           background: #24567b;
           float: left;
+          margin-left: px2rem(12);
+          padding-left: px2rem(18);
+          &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            right: px2rem(-20);
+            width: px2rem(50);
+            height: px2rem(40);
+            transform: skewX(30deg);
+            background: #24567b;
+          }
         }
         .update {
           float: right;
+          margin-right: px2rem(26);
           font-size: px2rem(28);
           color: #6199ea;
         }
       }
+      .echarts {
+        width: px2rem(700);
+        height: px2rem(400);
+        padding: 0 px2rem(25);
+        box-sizing: border-box;
+      }
     }
+    
   }
   
 </style>
