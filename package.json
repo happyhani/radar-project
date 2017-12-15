@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "better-scroll": "^0.1.7"
   },
   "devDependencies": {
 	"sass-loader": "^6.0.6",
