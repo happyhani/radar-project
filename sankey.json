@@ -1,0 +1,15 @@
+{"nodes":[
+	{"name":"left01"},
+	{"name":"left01"},
+	{"name":"left01"},
+	{"name":"left01"},
+	{"name":"left01"},
+	{"name":"thisShop"}
+],
+"links":[
+	{"source": "left01", "target": "thisShop",  "value": 20},
+	{"source": "left02", "target": "thisShop",  "value": 30},
+	{"source": "left03",  "target": "thisShop",  "value": 15},
+	{"source": "left04", "target": "thisShop",  "value": 25},
+	{"source": "left05",  "target": "thisShop",  "value": 60}
+]}

@@ -37,6 +37,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 ## eslint忽略文件： https://segmentfault.com/q/1010000007324736
 
+## ps的切图插件：http://www.cutterman.cn/zh/cutterman  或者   pxcook
 
 > mock数据问题：
 ```
