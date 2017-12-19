@@ -56,11 +56,70 @@
           <div class="echarts">
             <IEcharts :option="sankey1" ></IEcharts>
           </div>
+          <!--店铺占比-->
+          <div class="shop-statistics">
+            <ul>
+            	<li class="one">
+            	  <p>12.9%</p>
+            	  <p>店铺一</p>
+            	  <div></div>
+            	</li>
+            	<li class="one">
+                <p>12.9%</p>
+                <p>店铺二</p>
+                <div></div>
+              </li>
+              <li class="one">
+                <p>12.9%</p>
+                <p>店铺三</p>
+                <div></div>
+              </li>
+              <li class="one">
+                <p>12.9%</p>
+                <p>店铺四</p>
+                <div></div>
+              </li>
+              <li class="one">
+                <p>12.9%</p>
+                <p>店铺五</p>
+                <div></div>
+              </li>
+            </ul>
+          </div>
           <!--桑基图  客流导出-->
-          <p>客流导入 TOP5</p>
-          
+          <p>客流导出 TOP5</p>
           <div class="echarts">
             <IEcharts :option="sankey2" ></IEcharts>
+          </div>
+          <!--店铺占比-->
+          <div class="shop-statistics">
+            <ul>
+              <li class="one">
+                <p>12.9%</p>
+                <p>店铺一</p>
+                <div></div>
+              </li>
+              <li class="one">
+                <p>12.9%</p>
+                <p>店铺二</p>
+                <div></div>
+              </li>
+              <li class="one">
+                <p>12.9%</p>
+                <p>店铺三</p>
+                <div></div>
+              </li>
+              <li class="one">
+                <p>12.9%</p>
+                <p>店铺四</p>
+                <div></div>
+              </li>
+              <li class="one">
+                <p>12.9%</p>
+                <p>店铺五</p>
+                <div></div>
+              </li>
+            </ul>
           </div>
         </div>
         <!--获客坪效 条形统计图-->
@@ -76,8 +135,8 @@
         </div>
         <!--按钮-->
         <div class="btns">
-          <div class="prev">上一周</div>
-          <div class="now">本周</div>
+          <div class="prev" :class="{'active':chooseType===1}" @click="addActive(1, $event)">上一周</div>
+          <div class="now" :class="{'active':chooseType===2}" @click="addActive(2, $event)">本周</div>
         </div>
       </div>
     </div>
@@ -89,7 +148,7 @@
   import BScroll from 'better-scroll';
   import 'echarts/lib/chart/line';
   
-   export default {
+  export default {
     name: 'view',
     components: {
       IEcharts
@@ -98,6 +157,7 @@
     },
     data() {
       return {
+        chooseType: 1,
         bar: {
           color: ['#54d7ff','#72fffd'],
           tooltip : {
@@ -499,7 +559,17 @@
         this.contentScroll = new BScroll(this.$refs.contentWrapper, {
           click: true // 设置后可以点击，默认派发了一个点击事件
         });
+      },
+      addActive (type, event) {
+//      better-scroll中event._constructed===true  pc下不会触发两次click
+        if (!event._constructed) {
+          return;
+        }
+        this.chooseType = type;
+        console.log(1);
       }
+    },
+    computed: {
     }
   };
 </script>
@@ -640,13 +710,34 @@
           /*padding: 0 px2rem(25);*/
           box-sizing: border-box;
         }
+        .shop-statistics ul{
+          width: px2rem(620);
+          height: px2rem(80);
+          display: flex;
+          margin: 0 auto;
+          .one {
+            flex: 1;
+            p {
+              text-align: center;
+              font-size: px2rem(22);
+              line-height: px2rem(30);
+              color: #fff;
+            }
+            div {
+              margin: px2rem(10) auto 0;
+              width: px2rem(50);
+              height: px2rem(5);
+              background: #e1b779;
+            }
+          }
+        }
       }
       .passenger-trend {
         width: 100%;
         height: px2rem(1150);
         padding: px2rem(45) 0;
         box-sizing: border-box;
-        p {
+        &>p {
           margin-top: px2rem(28);
           text-align: center;
           font-size: px2rem(22);
@@ -654,16 +745,29 @@
         }
       }
       .btns {
+        font-size: 0;
+        text-align: center;
+        padding-bottom: px2rem(76);
         div {
+          position: relative;
+          display: inline-block;
           width: px2rem(120);
           height: px2rem(70);
+          border-radius: px2rem(4);
+          border: 1px solid #1a346b;
           line-height: px2rem(70);
           text-align: center;
           color: #6199ea;
           font-size: px2rem(22);
+          background: #20407a;
         }
         .prev {
-          
+          left: px2rem(4);
+          z-index: 10;
+        }
+        .active {
+          background: #3359a4;
+          z-index: 11;
         }
       }
     }
