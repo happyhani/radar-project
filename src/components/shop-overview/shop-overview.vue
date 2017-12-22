@@ -1,5 +1,5 @@
 <template>
-  <div class="overview-bg" >
+  <div class="container-bg" >
     <div class="header">
       <i class="icon-arrow_lift" @click></i>
       <p>店铺概览</p>
@@ -576,7 +576,7 @@
 
 <style lang="scss" scoped>
  @import '../../assets/hotcss/px2rem.scss';
-  .overview-bg {
+  .container-bg {
     position: absolute;
     top: 0;
     left: 0;
