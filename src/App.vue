@@ -10,8 +10,13 @@
       <div class="tab-item">
         <router-link to='/shops-ranking' active-class="active">商铺排行</router-link>
       </div>
+      <div class="tab-item">
+        <router-link to='/demo' active-class="active">demo</router-link>
+      </div>
     </div>
-    <router-view ></router-view>
+    <keep-alive>
+      <router-view ></router-view>
+    </keep-alive>
   </div>
 </template>
 

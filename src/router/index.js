@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import shopOverview from '../components/shop-overview/shop-overview.vue';
 import guestPortrait from '../components/guest-portrait/guest-portrait.vue';
 import shopsRanking from '../components/shops-ranking/shops-ranking.vue';
+import demo from '../components/demo';
 import '../common/style.css'; // icon
 
 Vue.use(Router);
@@ -23,6 +24,11 @@ export default new Router({
       path: '/shops-ranking',
       name: 'shopsRanking',
       component: shopsRanking
+    },
+    {
+      path: '/demo',
+      name: 'demo',
+      component: demo
     }
   ],
   linkExactActiveClass: 'active' // 激活当前样式，定义active类

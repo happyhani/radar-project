@@ -417,20 +417,33 @@
               itemStyle: {
                 normal: {
                   color: function (val) {
-                    return val.dataIndex % 2 ? '#72fffd' : '#54d7ff'
-                  },
-                  color: {
-                    type: 'linear',
-                    x: 1,
-                    y: 0,
-                    x2: 0,
-                    y2: 0,
-                    colorStops: [{
-                        offset: 0, color: 'rgba(117, 227, 255, .8)'  // 0% 处的颜色
-                    }, {
-                        offset: 1, color: 'rgba(64, 214, 222, .8)' // 100% 处的颜色
-                    }],
-                    globalCoord: false // 缺省为 false
+                    return val.dataIndex % 2 ? 
+                    {
+                      type: 'linear',
+                      x: 1,
+                      y: 0,
+                      x2: 0,
+                      y2: 0,
+                      colorStops: [{
+                          offset: 0, color: 'rgba(117, 227, 255, .8)'  // 0% 处的颜色
+                      }, {
+                          offset: 1, color: 'rgba(49, 165, 255, .8)' // 100% 处的颜色
+                      }],
+                      globalCoord: false // 缺省为 false
+                    } : 
+                    {
+                      type: 'linear',
+                      x: 1,
+                      y: 0,
+                      x2: 0,
+                      y2: 0,
+                      colorStops: [{
+                          offset: 0, color: 'rgba(117, 227, 255, .8)'  // 0% 处的颜色
+                      }, {
+                          offset: 1, color: 'rgba(64, 214, 222, .8)' // 100% 处的颜色
+                      }],
+                      globalCoord: false // 缺省为 false
+                    }
                   }
                 }
               },
